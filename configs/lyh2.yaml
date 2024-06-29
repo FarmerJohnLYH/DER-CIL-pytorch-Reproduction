@@ -1,0 +1,86 @@
+exp:
+  name: "CIFAR100B0S10_DER_wo_prune"
+  savedir: "./logs"
+  tensorboard_dir: "./tensorboard"
+  debug: False
+
+#Model Cfg
+model: "incmodel"
+convnet: 'resnet18' # 可选 'modified_resnet32', 'resnet18'
+train_head: 'softmax'
+infer_head: 'softmax'
+channel: 64
+use_bias: False
+last_relu: False
+
+der: True  # 动态扩展表示启用
+use_aux_cls: False
+aux_n+1: False
+distillation: "none"
+
+reuse_oldfc: False
+weight_normalization: False
+val_per_n_epoch: 1 # 每N个epoch进行一次验证。-1表示关闭验证功能
+save_ckpt: True
+display_norm: False
+
+#Optimization;Training related
+task_max: 10
+lr_min: 0.00005
+lr: 0.1 # 初始学习率
+weight_decay: 0.0005
+dynamic_weight_decay: False
+scheduler: 'multistep'
+scheduling:
+  - 100  # 第一次学习率衰减epoch
+  - 120  # 第二次学习率衰减epoch
+lr_decay: 0.1 # 学习率衰减系数
+optimizer: "sgd"
+epochs: 160 # 每个任务的epoch数
+
+postprocessor:
+  enable: True
+  type: 'bic'
+  epochs: 1
+  batch_size: 128
+  lr: 0.1
+  scheduling:
+    - 60
+    - 90
+    - 120
+  lr_decay_factor: 0.1
+  weight_decay: 0.0005
+
+decouple:
+  enable: True
+  epochs: 30
+  fullset: False
+  lr: 0.1
+  scheduling:
+    - 48
+    - 63
+  lr_decay: 0.3
+  weight_decay: 0.0005
+  temperature: 5.0
+
+# Dataset Cfg
+dataset: "cifar100" # 可选 'imagenet100', 'cifar100'
+trial: 0 
+increment: 10 # 增量步数
+batch_size: 128
+workers: 8
+validation: 0 # 验证集比例 (0. <= x <= 1.)
+random_classes: False # 是否随机化类的顺序
+start_class: 0 # 初始类的数量
+start_task: 1
+max_task:  # 任务数量上限
+
+#Memory
+coreset_strategy: "iCaRL" # 记忆集策略，可选 "iCaRL", "random", "inccore", "k-nearest-mean"
+mem_size_mode: "uniform_fixed_total_mem" # 可选 "uniform_fixed_per_cls", "uniform_fixed_total_mem", "dynamic_fixed_per_cls"
+memory_size: 2000 # 最大记忆样本数量
+fixed_memory_per_cls: 20 # 每类固定记忆样本数量
+
+# Misc
+device: 0 # 使用的GPU索引，CPU为-1
+seed: 1993

@@ -1,0 +1,14 @@
+
+ 2024-06-27 21:09:39,488 | INFO | root 	 {'exp': {'name': 'B0S10_noder', 'savedir': './logs', 'tensorboard_dir': './tensorboard/', 'debug': True, 'ckptdir': './logs/'}, 'model': 'incmodel', 'convnet': 'resnet18', 'train_head': 'softmax', 'infer_head': 'softmax', 'channel': 64, 'use_bias': False, 'last_relu': False, 'der': False, 'use_aux_cls': False, 'aux_n+1': False, 'distillation': 'none', 'reuse_oldfc': False, 'weight_normalization': False, 'val_per_n_epoch': -1, 'save_ckpt': True, 'display_norm': False, 'task_max': 10, 'lr_min': 5e-05, 'lr': 0.1, 'weight_decay': 0.0005, 'dynamic_weight_decay': False, 'scheduler': 'multistep', 'scheduling': [48, 63], 'lr_decay': 0.1, 'optimizer': 'sgd', 'epochs': 170, 'postprocessor': {'enable': False, 'type': 'bic', 'epochs': 1, 'batch_size': 128, 'lr': 0.1, 'scheduling': [60, 90, 120], 'lr_decay_factor': 0.1, 'weight_decay': 0.0005}, 'decouple': {'enable': False, 'epochs': 30, 'fullset': False, 'lr': 0.1, 'scheduling': [48, 63], 'lr_decay': 0.3, 'weight_decay': 0.0005, 'temperature': 5.0}, 'dataset': 'cifar100', 'trial': 0, 'increment': 10, 'batch_size': 128, 'workers': 8, 'validation': 0, 'random_classes': False, 'start_class': 0, 'start_task': 1, 'max_task': None, 'coreset_strategy': 'random', 'mem_size_mode': 'uniform_fixed_total_mem', 'memory_size': 2000, 'fixed_memory_per_cls': 20, 'device': 0, 'seed': 1993, 'load_mem': False, 'resampling': False, 'save_mem': True, 'temperature': 2, 'warmup': True, 'warmup_epochs': 10}
+
+ 2024-06-27 21:09:41,720 | INFO | root 	 classes_order
+
+ 2024-06-27 21:09:41,720 | INFO | root 	 [[62, 54, 84, 20, 94, 22, 40, 29, 78, 27, 26, 79, 17, 76, 68, 88, 3, 19, 31, 21, 33, 60, 24, 14, 6, 10, 16, 82, 70, 92, 25, 5, 28, 9, 61, 36, 50, 90, 8, 48, 47, 56, 11, 98, 35, 93, 44, 64, 75, 66, 15, 38, 97, 42, 43, 12, 37, 55, 72, 95, 18, 7, 23, 71, 49, 53, 57, 86, 39, 87, 34, 63, 81, 89, 69, 46, 2, 1, 73, 32, 67, 91, 0, 51, 83, 13, 58, 80, 74, 65, 4, 30, 45, 77, 99, 85, 41, 96, 59, 52]]
+
+ 2024-06-27 21:09:45,208 | INFO | root 	 Begin step 0
+
+ 2024-06-27 21:09:45,208 | INFO | root 	 Now [200, 200, 200, 200, 200, 200, 200, 200, 200, 200] examplars per class.
+
+ 2024-06-27 21:09:45,211 | INFO | root 	 Step 0 weight decay 0.00050
+
+ 2024-06-27 21:09:45,214 | INFO | root 	 Train on 0->10.
